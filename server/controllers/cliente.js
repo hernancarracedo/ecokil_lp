@@ -1,102 +1,82 @@
-var mysql = require('mysql');
-var dbconfig = require('../config/database');
-var conex = mysql.createConnection(dbconfig.connection);
-conex.query('USE ' + dbconfig.database);
+const clienteCtrl = {};
+const Cliente = require('../models/Cliente');
+const ClienteTipo = require('../models/ClienteTipo');
 
-//Get todos los Clientes
-async function getClientes(req, res){
-  sql = `SELECT id_cliente, tx_cliente, TIP.tx_tipo_cliente, fecha_alta as fechaalta, DATE_FORMAT(fecha_alta, '%d/%m/%Y') as fecha_alta, observaciones
-  FROM cliente as CLI
-  LEFT JOIN cliente_tipo as TIP on TIP.id_tipo_cliente  = CLI.id_tipo_cliente
-  WHERE CLI.baja is null`;
-  conex.query(sql, function(error, resultado, fields){
-      if (error) {
-          return res.status(404).send("Ha ocurrido un error en la consulta");
+//
+clienteCtrl.getClientes = async (req, res) => {
+    const clientes = await Cliente.findAll({
+         where: { baja: null  }
+    });
+/*
+    const clientes = await Cliente.findAll({
+        where: { baja: null },
+        include: [ 
+        {
+          model: ClienteTipo,
+            where: {
+            //'id_tipo_cliente': current_id_tipo_cliente
+            'id_tipo_cliente': Cliente.id_tipo_cliente
+        },
+        required: false
+        }]
+    });
+*/  
+    res.json(clientes);
+
+};
+
+//
+clienteCtrl.createCliente = async (req, res) => {
+    const { tx_cliente, id_tipo_cliente, razon_social, cuit, domicilio, fecha_alta, observaciones } = req.body;
+    const newCliente = {
+        tx_cliente: tx_cliente,
+        id_tipo_cliente: id_tipo_cliente,
+        razon_social: razon_social, 
+        cuit: cuit, 
+        domicilio: domicilio,
+        fecha_alta: fecha_alta,
+        observaciones: observaciones
       }
-      res.json(resultado)
-  });   
-}
+    await Cliente.create(newCliente)
+    res.json('Nuevo Cliente Agregado');
+};
 
-//Post Cliente
-async function newCliente(req, res){
-  const {tx_cliente, id_tipo_cliente, fecha_alta, observaciones} = req.body;
-  const errors = [];
-  if (!tx_cliente) { errors.push({text: 'Ingrese el nombre del cliente.'}); }   
-  if (!id_tipo_cliente) { errors.push({text: 'Ingrese tipo de Cliente.'}); }
-  if (!fecha_alta) { errors.push({text: 'Ingrese fecha de alta del Cliente.'}); }
-   
-  if (errors.length > 0) {
-      res.status(400).json({ 
-      errors,
-      tx_cliente,
-      id_tipo_cliente,
-      fecha_alta,
-      observaciones
-      });
-  } else {
-      sql = "INSERT INTO cliente (`tx_cliente`, `id_tipo_cliente`, `fecha_alta`, `observaciones`, `id_usuario`) VALUES ('" + tx_cliente + "','" + id_tipo_cliente + "', '" + fecha_alta + "', '" + observaciones + "', '88')";
-
-      conex.query(sql, function(error, resultado, fields){
-          if (error) {
-              return res.status(404).send("Ha ocurrido un error en la consulta:" + error.message);
-          }
-          res.status(200).send("Nuevo Cliente Agregado Correctamente");
-      });
-  }
-}
-
-async function getCliente(req, res){
-    sql = `select id_cliente, tx_cliente, CLI.id_tipo_cliente, tx_tipo_cliente, observaciones, fecha_alta as fecha2, DATE_FORMAT(fecha_alta, '%Y-%m-%d') as fecha_alta 
-    FROM cliente AS CLI
-    LEFT JOIN cliente_tipo as TIP on TIP.id_tipo_cliente = CLI.id_tipo_cliente
-    WHERE id_cliente ='`+req.params.id+`'`;
-    conex.query(sql, function(error, result_cliente, fields){
-        resultado = result_cliente[0];
-        res.json(resultado)
+//
+clienteCtrl.getCliente = async (req, res) => {
+    const cliente = await Cliente.findOne({
+        where: {id_cliente: req.params.id}
     });
+    res.json(cliente);
 }
 
-async function editCliente(req, res){
-    const {tx_cliente, id_tipo_cliente, fecha_alta, observaciones} = req.body;
-    console.log ('id :'+req.params.id+'\n');
-    console.log ('tx_cliente :'+tx_cliente+'\n');
-    console.log ('id_tipo_cliente :'+id_tipo_cliente+'\n');
-    console.log ('fecha :'+fecha_alta+'\n');
-    console.log ('observaciones :'+observaciones+'\n');
-    //console.log("ID Usuario: "+req.user.id);
-    
-    sql = "UPDATE cliente SET tx_cliente = '"+tx_cliente+"', id_tipo_cliente = '"+id_tipo_cliente+"', fecha_alta = '"+fecha_alta+"', observaciones = '"+observaciones+"', id_usuario = '99' WHERE id_cliente = "+req.params.id;
-    
-    conex.query(sql, function(error, resultado, fields){
-        if (error) {
-            console.log("Ha ocurrido un error en la consulta", error.message);
-            return res.status(404).send("Ha ocurrido un error en la consulta");
-        }
-        res.status(200).send("Cliente Actualizado");
-    });   
-}
-
-async function deleteCliente(req, res){
-    sql = "UPDATE cliente SET baja = DATE_FORMAT(NOW( ) , '%Y-%m-%d') WHERE id_cliente = "+req.params.id;
-    conex.query(sql, function(error, resultado, fields){
-        if (error) {
-            console.log("Ha ocurrido un error en la consulta", error.message);
-            return res.status(404).send("Ha ocurrido un error en la consulta");
-        }
-        res.status(200).send("Se ha eliminado el cliente");
+//
+clienteCtrl.updateCliente = async (req, res) => {
+    const { id_cliente, tx_cliente, id_tipo_cliente, razon_social, cuit, domicilio, fecha_alta, observaciones } = req.body;    
+    await Cliente.update({ 
+        tx_cliente: tx_cliente,
+        id_tipo_cliente: id_tipo_cliente,
+        razon_social: razon_social, 
+        cuit: cuit, 
+        domicilio: domicilio,
+        fecha_alta: fecha_alta,
+        observaciones: observaciones
+    }, 
+    { 
+        where: {id_cliente: id_cliente}
     });
+    res.json('Cliente Actualizado');
 }
 
-module.exports = {
-    getCliente,
-    getClientes,
-    newCliente,
-    editCliente,
-    deleteCliente
+//
+clienteCtrl.deleteCliente = async (req, res) => {
+    await Cliente.update({ 
+        baja: new Date(),
+    }, 
+    { 
+        where: {id_cliente: req.params.id}
+    });
+    res.json('Cliente Actualizado');
 }
 
-//// 1 ver como obtengo el user.id de la sesion
-//// 2 consultar ADRO donde iría el "await"
-//// 3 migrar de SQL puro a ORM (sequelize)
-//// 4 estudiar por ejemplo en editCliente como REACT recibe la lista de 
-////   id_cliente_tipo posibles o cualquier otro dato de tablas auxiliares
+
+module.exports = clienteCtrl;

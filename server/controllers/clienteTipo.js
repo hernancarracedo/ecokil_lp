@@ -6,7 +6,7 @@ conex.query('USE ' + dbconfig.database);
 //Get todos los Clientes
 async function getClienteTipos(req, res){
   sql = `SELECT id_tipo_cliente, tx_tipo_cliente
-        FROM cliente_tipo
+        FROM clientes_tipo
         WHERE baja is null`;
   conex.query(sql, function(error, resultado, fields){
       if (error) {

@@ -12,6 +12,15 @@ module.exports = db.sequelize.define(
     tx_cliente: {
       type: Sequelize.STRING
     },
+    razon_social: {
+      type: Sequelize.STRING
+    },
+    cuit: {
+      type: Sequelize.STRING
+    },
+    domicilio: {
+      type: Sequelize.STRING
+    },    
     id_tipo_cliente: {
       type: Sequelize.INTEGER
     },
@@ -27,7 +36,7 @@ module.exports = db.sequelize.define(
     },    
     baja: {
       type: Sequelize.DATE,
-      defaultValue: Sequelize.NOW
+      defaultValue: Sequelize.NULL
     }
   }, 
   {

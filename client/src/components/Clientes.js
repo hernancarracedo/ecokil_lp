@@ -14,14 +14,14 @@ export default class Clientes extends Component {
     }
 
     getClientes = async () => {
-        const res = await axios.get('http://localhost:5000/cliente')
+        const res = await axios.get('http://localhost:5000/getClientes')
         this.setState({
             clientes: res.data
         });
     }
 
     deleteCliente = async (clienteId) => {
-        await axios.put('http://localhost:5000/cliente/delete/' + clienteId);
+        await axios.put('http://localhost:5000/cliente/deleteCliente/' + clienteId);
         this.getClientes();
     }
 
@@ -64,7 +64,7 @@ export default class Clientes extends Component {
                                 <button className="btn btn-danger" title="borrar cliente" onClick={() => this.deleteCliente(cliente.id_cliente)}>
                                     <i className="material-icons">X</i>
                                 </button>
-                                <Link to={"/cliente-edit/" + cliente.id_cliente} className="btn btn-secondary">
+                                <Link to={"/updateCliente/" + cliente.id_cliente} className="btn btn-secondary">
                                     <i className="material-icons">border_color</i>
                                 </Link>
                             </td>

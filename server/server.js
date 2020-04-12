@@ -20,6 +20,10 @@ app.use('/users', Users)
 app.use(require('./routes/cliente'));
 app.use(require('./routes/clienteTipo'));
 
+// routes
+//app.use('/cliente', require('./routes/cliente'));
+//app.use('/clienteTipo', require('./routes/clienteTipo'));
+
 
 app.listen(port, function() {
   console.log('Server is running on port: ' + port)
