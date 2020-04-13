@@ -12,10 +12,10 @@ class Sidebar extends Component {
     const loginRegLink = (
           <div>
           <Link to="/login" className="list-group-item list-group-item-action bg-light">
-            Login
+            <i class="fa fa-sign-in"></i> Login
           </Link>
           <Link to="/register" className="list-group-item list-group-item-action bg-light">
-            Register
+          <i class="fa fa-vcard-o"></i> Register
           </Link>
           </div>
     )
@@ -23,13 +23,13 @@ class Sidebar extends Component {
     const userLink = (
           <div>
           <Link to="/profile" className="list-group-item list-group-item-action bg-light">
-            User
+            <i class="fa fa-user"></i> User
           </Link>
           <Link to="/clientes" className="list-group-item list-group-item-action bg-light">
-            Clientes
+            <i class="fa fa-address-card-o"></i> Clientes
           </Link>
           <a href="" onClick={this.logOut.bind(this)} className="list-group-item list-group-item-action bg-light">
-            Logout
+            <i class="fa fa-power-off"></i>  Logout
           </a>
           </div>
     )
@@ -39,7 +39,7 @@ class Sidebar extends Component {
       <div className="sidebar-heading">ECOKIL </div>
       <div className="list-group list-group-flush">
         <Link to="/" className="list-group-item list-group-item-action bg-light">
-          Home
+          <i class="fa fa-home"></i>  Home
         </Link>
 
         {localStorage.usertoken ? userLink : loginRegLink}

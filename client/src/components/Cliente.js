@@ -61,7 +61,7 @@ export default class Cliente extends Component {
                 cuit: this.state.cuit,
                 domicilio: this.state.domicilio
             };
-            await axios.put('http://localhost:5000/cliente/edit/' + this.state.id_cliente, updatedCliente);
+            await axios.put('http://localhost:5000/cliente/update/' + this.state.id_cliente, updatedCliente);
         } else {
             console.log(this.state);  
             const newCliente = {
@@ -73,7 +73,7 @@ export default class Cliente extends Component {
                 cuit: this.state.cuit,
                 domicilio: this.state.domicilio                
             };
-            axios.post('http://localhost:5000/cliente/add', newCliente);
+            axios.post('http://localhost:5000/cliente/create/', newCliente);
         }
         window.location.href = '/clientes';
     }
@@ -92,6 +92,7 @@ export default class Cliente extends Component {
         return (
             <div className="container-fluid">
                <h1 className="mt-4">CLIENTES</h1>
+                    <div className="col-md-8 offset-md-2">
                     <form onSubmit={this.onSubmit}>
                        
                         {/* Nombre de fantasía del cliente */}
@@ -197,10 +198,10 @@ export default class Cliente extends Component {
                         <br /> 
 
                         <button className="btn btn-primary btn-block">
-                            Guardar Cliente <i className="material-icons">save</i>
+                        <i class="fa fa-save"></i> Guardar Cliente 
                         </button>
                     </form>
- 
+                </div>                    
             </div>
         )
     }
