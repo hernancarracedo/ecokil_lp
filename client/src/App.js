@@ -10,6 +10,7 @@ import Register from './components/Register'
 import Profile from './components/Profile'
 import Clientes from './components/Clientes'
 import Cliente from './components/Cliente'
+import ClienteTipos from './components/ClienteTipos'
 
 class App extends Component {
   render() {
@@ -30,9 +31,12 @@ class App extends Component {
                 <Route exact path="/register" component={Register} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/profile" component={Profile} />
+
                 <Route exact path="/clientes" component={Clientes} />
                 <Route exact path="/cliente" component={Cliente} />            
                 <Route exact path="/clienteUpdate/:id" component={Cliente} />
+
+                <Route exact path="/clienteTipos" component={ClienteTipos} />
               </div>
 
 

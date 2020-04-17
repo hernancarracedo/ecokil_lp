@@ -3,47 +3,38 @@ var dbconfig = require('../config/database');
 var conex = mysql.createConnection(dbconfig.connection);
 conex.query('USE ' + dbconfig.database);
 
-//Get todos los Clientes
-async function getClienteTipos(req, res){
+const clienteTipoCtrl = {};
+
+// Get todos los Tipos de Cliente
+clienteTipoCtrl.getClienteTipos = async (req, res) => {
   sql = `SELECT id_tipo_cliente, tx_tipo_cliente
-        FROM clientes_tipo
-        WHERE baja is null`;
-  conex.query(sql, function(error, resultado, fields){
+         FROM clientes_tipo
+         WHERE baja is null`;
+    conex.query(await sql, function(error, result, fields){
       if (error) {
           return res.status(404).send("Ha ocurrido un error en la consulta");
       }
-      res.json(resultado)
+      res.json(result)
   });   
 }
-/*
-//Post Cliente
-async function newCliente(req, res){
-  const {tx_cliente, id_tipo_cliente, fecha_alta, observaciones} = req.body;
-  const errors = [];
-  if (!tx_cliente) { errors.push({text: 'Ingrese el nombre del cliente.'}); }   
-  if (!id_tipo_cliente) { errors.push({text: 'Ingrese tipo de Cliente.'}); }
-  if (!fecha_alta) { errors.push({text: 'Ingrese fecha de alta del Cliente.'}); }
-   
-  if (errors.length > 0) {
-      res.status(400).json({ 
-      errors,
-      tx_cliente,
-      id_tipo_cliente,
-      fecha_alta,
-      observaciones
-      });
-  } else {
-      sql = "INSERT INTO cliente (`tx_cliente`, `id_tipo_cliente`, `fecha_alta`, `observaciones`, `id_usuario`) VALUES ('" + tx_cliente + "','" + id_tipo_cliente + "', '" + fecha_alta + "', '" + observaciones + "', '88')";
 
-      conex.query(sql, function(error, resultado, fields){
-          if (error) {
-              return res.status(404).send("Ha ocurrido un error en la consulta:" + error.message);
-          }
-          res.status(200).send("Nuevo Cliente Agregado Correctamente");
+//Post Nuevo Tipo Cliente
+clienteTipoCtrl.createClienteTipo = async (req, res) => {    
+    const {tx_tipo_cliente} = req.body;
+
+    sql = `INSERT INTO clientes_tipo 
+        (tx_tipo_cliente) 
+        VALUES 
+        ('`+tx_tipo_cliente+`')`;
+
+    conex.query(await sql, function(error, result, fields){
+        if (error) {
+            return res.status(404).send("Ha ocurrido un error en la consulta:" + error.message);
+        }
+        res.status(200).send("Nuevo Tipo de Cliente Agregado Correctamente");
       });
-  }
 }
-
+/*
 async function getCliente(req, res){
     sql = `select id_cliente, tx_cliente, CLI.id_tipo_cliente, tx_tipo_cliente, observaciones, fecha_alta as fecha2, DATE_FORMAT(fecha_alta, '%Y-%m-%d') as fecha_alta 
     FROM cliente AS CLI
@@ -86,10 +77,6 @@ async function deleteCliente(req, res){
     });
 }
 */
-module.exports = {
-    //getCliente,
-    getClienteTipos,
-    //newCliente,
-    //editCliente,
-    //deleteCliente
-}
+
+
+module.exports = clienteTipoCtrl;

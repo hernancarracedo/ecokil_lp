@@ -21,7 +21,7 @@ export default class Cliente extends Component {
     }
 
     async componentDidMount() {
-        const res = await axios.get('http://localhost:5000/tipos-cliente');
+        const res = await axios.get('http://localhost:5000/clientetipo');
         if (res.data.length > 0) {
             this.setState({
                 tiposCliente: res.data.map(tipo => [tipo.id_tipo_cliente,tipo.tx_tipo_cliente]),
@@ -54,7 +54,7 @@ export default class Cliente extends Component {
             const updatedCliente = {
                 id_cliente:  this.state.id_cliente,
                 tx_cliente:  this.state.tx_cliente,
-                id_tipo_cliente:  this.state.id_tipo_cliente,
+                id_tipo_cliente:  this.state.idTipoClienteSelected,
                 observaciones:  this.state.observaciones,
                 fecha_alta: this.state.fecha_alta,
                 razon_social: this.state.razon_social,
@@ -151,13 +151,14 @@ export default class Cliente extends Component {
                         </div>
                         {/* SELECCIONAR TIPO DE CLIENTE */}
                         <div className="form-group row">
-                            <label className="col-sm-3 col-form-label" htmlFor="tx_tipo_cliente">Tipo Cliente:</label>
+                            <label className="col-sm-3 col-form-label" htmlFor="idTipoClienteSelected">Tipo Cliente:</label>
                             <div className="col-md-9"> 
                                 <select
                                     className="form-control"
                                     value={this.state.idTipoClienteSelected}
                                     onChange={this.onInputChange}
-                                    name="id_tipo_cliente"
+                                    //name="id_tipo_cliente"
+                                    name="idTipoClienteSelected"
                                     required>
                                     {
                                         this.state.tiposCliente.map(tipoCliente => (
@@ -198,7 +199,7 @@ export default class Cliente extends Component {
                         <br /> 
 
                         <button className="btn btn-primary btn-block">
-                        <i class="fa fa-save"></i> Guardar Cliente 
+                        <i className="fa fa-save"></i> Guardar Cliente 
                         </button>
                     </form>
                 </div>                    

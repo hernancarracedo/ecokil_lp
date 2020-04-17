@@ -20,10 +20,10 @@ module.exports = db.sequelize.define(
     },
     domicilio: {
       type: Sequelize.STRING
-    },    
+    },
     id_tipo_cliente: {
       type: Sequelize.INTEGER
-    },
+    },    
     observaciones: {
       type: Sequelize.STRING
     },
@@ -43,3 +43,4 @@ module.exports = db.sequelize.define(
     timestamps: false
   }
 )
+

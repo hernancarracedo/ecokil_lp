@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import jwt_decode from 'jwt-decode'
+//import jwt_decode from 'jwt-decode'
 
 class Topbar extends Component {
 
@@ -48,7 +48,8 @@ class Topbar extends Component {
               </div>
             </li>
             <li>
-              <img src="http://localhost:5000/public/img/profile.jpg" class="rounded-circle" /> 
+              <img src="http://localhost:5000/public/img/profile.jpg" alt="imagen de perfil" className="rounded-circle" />
+              
             </li>
           </ul>
         </div>

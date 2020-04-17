@@ -12,10 +12,10 @@ class Sidebar extends Component {
     const loginRegLink = (
           <div>
           <Link to="/login" className="list-group-item list-group-item-action bg-light">
-            <i class="fa fa-sign-in"></i> Login
+            <i className="fa fa-sign-in"></i> Login
           </Link>
           <Link to="/register" className="list-group-item list-group-item-action bg-light">
-          <i class="fa fa-vcard-o"></i> Register
+          <i className="fa fa-vcard-o"></i> Register
           </Link>
           </div>
     )
@@ -23,13 +23,16 @@ class Sidebar extends Component {
     const userLink = (
           <div>
           <Link to="/profile" className="list-group-item list-group-item-action bg-light">
-            <i class="fa fa-user"></i> User
+            <i className="fa fa-user"></i> User
           </Link>
           <Link to="/clientes" className="list-group-item list-group-item-action bg-light">
-            <i class="fa fa-address-card-o"></i> Clientes
+            <i className="fa fa-address-card-o"></i> Clientes
+          </Link>
+          <Link to="/clienteTipos" className="list-group-item list-group-item-action bg-light">
+            <i className="fa fa-caret-down"></i> Clientes Tipos
           </Link>
           <a href="" onClick={this.logOut.bind(this)} className="list-group-item list-group-item-action bg-light">
-            <i class="fa fa-power-off"></i>  Logout
+            <i className="fa fa-power-off"></i>  Logout
           </a>
           </div>
     )
@@ -39,7 +42,7 @@ class Sidebar extends Component {
       <div className="sidebar-heading">ECOKIL </div>
       <div className="list-group list-group-flush">
         <Link to="/" className="list-group-item list-group-item-action bg-light">
-          <i class="fa fa-home"></i>  Home
+          <i className="fa fa-home"></i>  Home
         </Link>
 
         {localStorage.usertoken ? userLink : loginRegLink}
