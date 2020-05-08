@@ -3,13 +3,14 @@ var dbconfig = require('../config/database');
 var conex = mysql.createConnection(dbconfig.connection);
 conex.query('USE ' + dbconfig.database);
 
-const clienteTipoCtrl = {};
+const referenciasCtrl = {};
 
-// GET - todos los Tipos de Cliente
-clienteTipoCtrl.getClienteTipos = async (req, res) => {
-  sql = `SELECT id_tipo_cliente, tx_tipo_cliente
-         FROM clientes_tipo
-         WHERE baja is null`;
+// GET - todas las referencias de lo que se puede encontrar al monitorear cebaderas
+referenciasCtrl.getReferencias = async (req, res) => {
+  sql = `SELECT id_referencia, tx_referencia
+         FROM dispositivos_cebaderas_ref
+         WHERE fecha_baja is null`;
+
     conex.query(await sql, function(error, result, fields){
       if (error) {
           return res.status(404).send("Ha ocurrido un error en la consulta");
@@ -17,7 +18,7 @@ clienteTipoCtrl.getClienteTipos = async (req, res) => {
       res.json(result)
   });   
 }
-
+/*
 //POST - Nuevo Tipo Cliente
 clienteTipoCtrl.createClienteTipo = async (req, res) => {    
     const {tx_tipo_cliente} = req.body;
@@ -74,5 +75,5 @@ clienteTipoCtrl.deleteClienteTipo = async (req, res) => {
         res.status(200).send("Se ha eliminado el tipo cliente");
     });
 }
-
-module.exports = clienteTipoCtrl;
+*/
+module.exports = referenciasCtrl;

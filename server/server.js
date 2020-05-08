@@ -19,6 +19,9 @@ app.use('/users', Users)
 // rutas que voy agregando. HC.-
 app.use(require('./routes/cliente'));
 app.use(require('./routes/clienteTipo'));
+app.use(require('./routes/sucursal'));
+app.use(require('./routes/dispositivo'));
+app.use(require('./routes/referencias'));
 
 // routes
 //app.use('/cliente', require('./routes/cliente'));

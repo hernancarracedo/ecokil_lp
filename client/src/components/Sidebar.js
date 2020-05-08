@@ -5,7 +5,8 @@ class Sidebar extends Component {
   logOut(e) {
     e.preventDefault()
     localStorage.removeItem('usertoken')
-    this.props.history.push(`/`)
+    window.location.href = '/';
+    //this.props.history.push(`/`)
   }
 
   render() {
@@ -39,7 +40,7 @@ class Sidebar extends Component {
 
     return (
       <div>
-      <div className="sidebar-heading">ECOKIL </div>
+      <div className="sidebar-heading">ECOKIL | <i className="fa fa-bug"></i><i className="fa fa-ban"></i></div>
       <div className="list-group list-group-flush">
         <Link to="/" className="list-group-item list-group-item-action bg-light">
           <i className="fa fa-home"></i>  Home

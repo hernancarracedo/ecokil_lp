@@ -3,14 +3,16 @@ var dbconfig = require('../config/database');
 var conex = mysql.createConnection(dbconfig.connection);
 conex.query('USE ' + dbconfig.database);
 
-const clienteCtrl = {};
+const dispositivoCtrl = {};
 
 //
-clienteCtrl.getClientes = async (req, res) => {
-    sql = `SELECT id_cliente, tx_cliente, tx_tipo_cliente, observaciones, fecha_alta as fecha2, DATE_FORMAT(fecha_alta, '%d/%m/%Y') as fecha_alta
-           FROM clientes AS CLI
-           LEFT JOIN clientes_tipo as TIP on TIP.id_tipo_cliente = CLI.id_tipo_cliente
-           WHERE CLI.baja is null`;
+dispositivoCtrl.getDispositivos = async (req, res) => {
+    sql = `SELECT id_dispositivo, tx_dispositivo
+           FROM dispositivos
+           WHERE tipo_dispositivo = '4'
+           AND id_plano = '`+req.params.id+`'`;
+     
+           console.log("consulta" + sql)
     conex.query(await sql, function(error, result, fields){
         if (error) {
             return res.status(404).send("Ha ocurrido un error en la consulta");
@@ -18,7 +20,7 @@ clienteCtrl.getClientes = async (req, res) => {
         res.json(result)
     });   
 }
-
+/*
 //  
 clienteCtrl.createCliente = async (req, res) => {
     const { tx_cliente, id_tipo_cliente, razon_social, cuit, domicilio, fecha_alta, observaciones } = req.body;
@@ -73,5 +75,5 @@ clienteCtrl.deleteCliente = async (req, res) => {
         res.status(200).send("Se ha eliminado el cliente");
     });
 }
-
-module.exports = clienteCtrl;
+*/
+module.exports = dispositivoCtrl;

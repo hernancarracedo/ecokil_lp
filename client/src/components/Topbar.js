@@ -48,7 +48,7 @@ class Topbar extends Component {
               </div>
             </li>
             <li>
-              <img src="http://localhost:5000/public/img/profile.jpg" alt="imagen de perfil" className="rounded-circle" />
+              <img src="./img/profile.jpg" alt="imagen de perfil" className="rounded-circle" />
               
             </li>
           </ul>

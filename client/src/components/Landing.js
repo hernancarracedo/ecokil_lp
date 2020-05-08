@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link, withRouter } from 'react-router-dom'
 
 class Landing extends Component {
   render() {
@@ -8,6 +9,10 @@ class Landing extends Component {
           <div className="col-sm-8 mx-auto">
             <h1 className="text-center">Manejo Integrado de Plagas</h1>
           </div>
+          
+          <Link to={"/login"} className="btn btn-primary" title="ingresar al sistema">
+              Ingresar
+          </Link>
         </div>
       </div>
     )

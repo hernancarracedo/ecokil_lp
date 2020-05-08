@@ -9,8 +9,8 @@ const clienteTipoController = require('../controllers/clienteTipo');
  
 router.post('/clientetipo/create', clienteTipoController.createClienteTipo);
 router.get('/clientetipo', clienteTipoController.getClienteTipos);
-//router.get('/clientetipo/:id', clienteTipoController.getClienteTipo);
-//router.put('/clientetipo/update/:id', clienteTipoController.updateClienteTipo);
-//router.delete('/clientetipo/delete/:id', clienteTipoController.deleteClienteTipo);
+router.get('/clientetipo/:id', clienteTipoController.getClienteTipo);
+router.put('/clientetipo/update/:id', clienteTipoController.updateClienteTipo);
+router.delete('/clientetipo/delete/:id', clienteTipoController.deleteClienteTipo);
 
 module.exports = router;

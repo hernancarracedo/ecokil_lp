@@ -21,6 +21,7 @@ export const login = user => {
     })
     .then(response => {
       localStorage.setItem('usertoken', response.data)
+      window.location.href = '/profile';
       return response.data
     })
     .catch(err => {
