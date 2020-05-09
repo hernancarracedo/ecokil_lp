@@ -10,7 +10,7 @@ const dispositivoController = require('../controllers/dispositivo');
 //router.post('/cliente/add', isAuthenticated, clienteController.newCliente);
 // la linea de arriba queda de ejemplo de como deberia meter el helper para chequear logueo
 
-//router.post('/cliente/create', clienteController.createCliente);
+router.post('/dispositivos/create', dispositivoController.createDispositivos);
 router.get('/dispositivos/:id', dispositivoController.getDispositivos);
 //router.get('/cliente/:id', clienteController.getCliente);
 //router.put('/cliente/update/:id', clienteController.updateCliente);
