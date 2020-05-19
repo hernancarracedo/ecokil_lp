@@ -20,8 +20,9 @@ app.use('/users', Users)
 app.use(require('./routes/cliente'));
 app.use(require('./routes/clienteTipo'));
 app.use(require('./routes/sucursal'));
-app.use(require('./routes/dispositivo'));
+app.use(require('./routes/monitoreo'));
 app.use(require('./routes/referencias'));
+app.use(require('./routes/plano'));
 
 // routes
 //app.use('/cliente', require('./routes/cliente'));

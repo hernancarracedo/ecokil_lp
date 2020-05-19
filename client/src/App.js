@@ -13,6 +13,12 @@ import Cliente from './components/Cliente'
 import ClienteTipos from './components/ClienteTipos'
 import ClienteTipo from './components/ClienteTipo'
 import Monitoreo from './components/Monitoreo'
+import Planos from './components/Planos'
+import Plano from './components/Plano'
+import CanvasB from './components/CanvasB'
+import CanvasC from './components/CanvasC'
+
+//import Canvas from './components/Canvas'
 
 class App extends Component {
   render() {
@@ -41,6 +47,15 @@ class App extends Component {
                 <Route exact path="/clienteTipoUpdate/:id" component={ClienteTipo} />
 
                 <Route exact path="/dispositivosMonitoreo/:id" component={Monitoreo} />
+
+                <Route exact path="/Planos/:id" component={Planos} />
+
+                <Route exact path="/Plano" component={Plano} />
+
+                <Route exact path="/CanvasB" component={CanvasB} />
+
+                <Route exact path="/CanvasC" component={CanvasC} />
+           
               </div>
             </div>
     )

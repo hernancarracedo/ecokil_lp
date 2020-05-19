@@ -53,11 +53,14 @@ export default class Clientes extends Component {
                             <td>{cliente.fecha_alta}</td>
                             <td>{cliente.observaciones}</td>
                             <td>
-                                <button className="btn btn-danger mr-2" title="borrar cliente" onClick={() => this.deleteCliente(cliente.id_cliente)}>
+                                <button className="btn-sm btn-danger mr-2 " title="borrar cliente" onClick={() => this.deleteCliente(cliente.id_cliente)}>
                                     <i className="fa fa-trash"></i>
                                 </button>
-                                <Link to={"/clienteUpdate/" + cliente.id_cliente} className="btn btn-warning" title="actualizar cliente">
+                                <Link to={"/clienteUpdate/" + cliente.id_cliente} className="btn-sm btn-warning mr-2" title="actualizar cliente">
                                     <i className="fa fa-pencil"></i>
+                                </Link>
+                                <Link to={"/planos/" + cliente.id_cliente} className="btn-sm btn-success mr-2" title="planos cliente">
+                                    <i className="fa fa-bug"></i>
                                 </Link>
                             </td>
                         </tr>    

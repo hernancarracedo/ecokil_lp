@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import jwt_decode from 'jwt-decode'
 
+
 class Profile extends Component {
   constructor() {
     super()
@@ -42,7 +43,6 @@ class Profile extends Component {
               </tr>
             </tbody>
           </table>
-
       </div>
     )
   }

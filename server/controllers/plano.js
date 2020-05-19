@@ -3,16 +3,15 @@ var dbconfig = require('../config/database');
 var conex = mysql.createConnection(dbconfig.connection);
 conex.query('USE ' + dbconfig.database);
 
-const dispositivoCtrl = {};
+const planoCtrl = {};
 
 //
-dispositivoCtrl.getDispositivos = async (req, res) => {
-    sql = `SELECT id_dispositivo, tx_dispositivo
-           FROM dispositivos
-           WHERE tipo_dispositivo = '4'
-           AND id_plano = '`+req.params.id+`'`;
-     
-           //console.log("consulta" + sql)
+planoCtrl.getPlanos = async (req, res) => {
+    sql = `select id_plano, tx_cliente, tx_sucursal, tx_plano
+            from planos as PLA
+            left join sucursales as SUC on PLA.id_sucursal = SUC.id_sucursal
+            left join clientes as CLI on CLI.id_cliente = SUC.id_cliente
+            WHERE CLI.id_cliente = '`+req.params.idcliente+`'`;
     conex.query(await sql, function(error, result, fields){
         if (error) {
             return res.status(404).send("Ha ocurrido un error en la consulta");
@@ -20,26 +19,19 @@ dispositivoCtrl.getDispositivos = async (req, res) => {
         res.json(result)
     });   
 }
-
+/*
 //  
-dispositivoCtrl.createDispositivos = async (req, res) => {
-    console.log(req.body);
-
-    // var data = JSON.parse(req.body);
-    // var responseJson = JSON.stringify(data.response);
-
-    const sql = `INSERT INTO dispositivos_monitoreos (id_dispositivo, id_referencia, fecha) VALUES ` + req.body.map(({id_dispositivo, id_referencia, fecha})=>`(${id_dispositivo}, ${id_referencia}, '${fecha}')`).join(',');
-    //sql = "INSERT INTO clientes (`tx_cliente`, `id_tipo_cliente`, `razon_social`, `cuit`, `domicilio`, `fecha_alta`, `observaciones`, `id_usuario`) VALUES ('" + tx_cliente + "','" + id_tipo_cliente + "', '" + razon_social + "', '" + cuit + "', '" + domicilio + "', '" + fecha_alta + "', '" + observaciones + "', '88')";
-    console.log("LA CONSULTA QUEDA: " + sql);
+clienteCtrl.createCliente = async (req, res) => {
+    const { tx_cliente, id_tipo_cliente, razon_social, cuit, domicilio, fecha_alta, observaciones } = req.body;
+    sql = "INSERT INTO clientes (`tx_cliente`, `id_tipo_cliente`, `razon_social`, `cuit`, `domicilio`, `fecha_alta`, `observaciones`, `id_usuario`) VALUES ('" + tx_cliente + "','" + id_tipo_cliente + "', '" + razon_social + "', '" + cuit + "', '" + domicilio + "', '" + fecha_alta + "', '" + observaciones + "', '88')";
     conex.query(await sql, function(error, resultado, fields){
         if (error) {
             return res.status(404).send("Ha ocurrido un error en la consulta:" + error.message);
         }
         res.status(200).send("Nuevo Cliente Agregado Correctamente");
     });
-    
 };
-/*
+
 //
 clienteCtrl.getCliente = async (req, res) => {
     sql = "SELECT * FROM clientes WHERE id_cliente = '"+req.params.id+"'";
@@ -83,4 +75,4 @@ clienteCtrl.deleteCliente = async (req, res) => {
     });
 }
 */
-module.exports = dispositivoCtrl;
+module.exports = planoCtrl;

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
 
 export default class Monitoreo extends Component {
     state = {
@@ -19,7 +19,7 @@ export default class Monitoreo extends Component {
     }
 
     getDispositivos = async () => {
-        const res = await axios.get('http://localhost:5000/dispositivos/' + this.props.match.params.id);
+        const res = await axios.get('http://localhost:5000/monitoreo/' + this.props.match.params.id);
         this.setState({
            //cebaderas: res.data.map(cebadera => [cebadera.id_dispositivo,cebadera.tx_dispositivo, 7]),
            cebaderas: res.data.map(cebadera => ({
@@ -65,7 +65,7 @@ export default class Monitoreo extends Component {
             id_referencia: cebadera.monitoreo, 
             fecha: this.state.fechaMonitoreo})
         )
-        axios.post('http://localhost:5000/dispositivos/create/', newMonitoreo);
+        axios.post('http://localhost:5000/monitoreo/create/', newMonitoreo);
         window.location.href = '/';
       };
 

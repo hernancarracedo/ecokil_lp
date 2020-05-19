@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-//import jwt_decode from 'jwt-decode'
+import jwt_decode from 'jwt-decode'
 
 class Topbar extends Component {
 
@@ -8,7 +8,7 @@ class Topbar extends Component {
       last_name: '',
       email: ''
   }
-/**
+
   componentDidMount() {
     const token = localStorage.usertoken
     const decoded = jwt_decode(token)
@@ -18,7 +18,7 @@ class Topbar extends Component {
       email: decoded.email
     })
   }
-*/
+
   render() {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom">
@@ -38,7 +38,7 @@ class Topbar extends Component {
             </li>
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {this.state.email}
+                {this.state.first_name} {this.state.last_name}
               </a>
               <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <a className="dropdown-item" href="">Action</a>
@@ -48,7 +48,8 @@ class Topbar extends Component {
               </div>
             </li>
             <li>
-              <img src="./img/profile.jpg" alt="imagen de perfil" className="rounded-circle" />
+
+              <img src="/img/profile2.jpg" alt="imagen de perfil" className="rounded-circle" />
               
             </li>
           </ul>
