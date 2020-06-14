@@ -20,6 +20,10 @@ app.use('/users', Users)
 app.use(require('./routes/cliente'));
 app.use(require('./routes/clienteTipo'));
 app.use(require('./routes/sucursal'));
+app.use(require('./routes/factura'));
+app.use(require('./routes/pago'));
+app.use(require('./routes/saldos'));
+app.use(require('./routes/detalleCuenta'));
 app.use(require('./routes/monitoreo'));
 app.use(require('./routes/referencias'));
 app.use(require('./routes/plano'));

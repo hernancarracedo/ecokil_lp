@@ -10,6 +10,10 @@ import Register from './components/Register'
 import Profile from './components/Profile'
 import Clientes from './components/Clientes'
 import Cliente from './components/Cliente'
+import Factura from './components/Factura'
+import Pago from './components/Pago'
+import Saldos from './components/Saldos'
+import DetalleCuenta from './components/DetalleCuenta'
 import ClienteTipos from './components/ClienteTipos'
 import ClienteTipo from './components/ClienteTipo'
 import Monitoreo from './components/Monitoreo'
@@ -41,6 +45,16 @@ class App extends Component {
                 <Route exact path="/clientes" component={Clientes} />
                 <Route exact path="/cliente" component={Cliente} />            
                 <Route exact path="/clienteUpdate/:id" component={Cliente} />
+
+                
+                <Route exact path="/factura" component={Factura} />            
+                <Route exact path="/facturaUpdate/:id" component={Factura} />        
+
+                <Route exact path="/pago" component={Pago} />            
+                <Route exact path="/pagoUpdate/:id" component={Pago} />       
+
+                <Route exact path="/saldos" component={Saldos} />      
+                <Route exact path="/detalleCuenta/:id" component={DetalleCuenta} />   
 
                 <Route exact path="/clienteTipos" component={ClienteTipos} />
                 <Route exact path="/clienteTipo" component={ClienteTipo} />

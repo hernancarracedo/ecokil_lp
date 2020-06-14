@@ -20,10 +20,8 @@ class CanvasC extends Component {
     items: [],
     canvasWidth: 1000,
     canvasHeight: 1000,
-    editing: true
+    //dragState: "draggable"
   };
-
-
 
   componentDidMount() {
     const img = this.refs.image
@@ -54,12 +52,12 @@ class CanvasC extends Component {
     // remove from the list:
     items.splice(index, 1);
     // add to the top
-
     items.push(item);
     this.setState({
       items
     });
   };
+
   onDragEnd = e => {
     const id = e.target.name();
     const items = this.state.items.slice();
@@ -100,6 +98,7 @@ class CanvasC extends Component {
                 key={item.id}
                 name={item.id}
                 draggable
+                //{ ...this.state.dragState }
                 x={item.x}
                 y={item.y}
                 width={20}

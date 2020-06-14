@@ -30,7 +30,10 @@ class Sidebar extends Component {
             <i className="fa fa-address-card-o"></i> Clientes
           </Link>
           <Link to="/clienteTipos" className="list-group-item list-group-item-action bg-light">
-            <i className="fa fa-caret-down"></i> Clientes Tipos
+            <i className="fa fa-th"></i> Clientes Tipos
+          </Link>
+          <Link to="/saldos" className="list-group-item list-group-item-action bg-light">
+            <i className="fa fa-balance-scale"></i> Saldos
           </Link>
           <a href="" onClick={this.logOut.bind(this)} className="list-group-item list-group-item-action bg-light">
             <i className="fa fa-power-off"></i>  Logout
