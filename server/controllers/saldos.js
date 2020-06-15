@@ -20,4 +20,18 @@ saldosCtrl.getSaldos = async (req, res) => {
   });   
 }
 
+// GET - Tipo de Cliente por ID
+saldosCtrl.getSaldo = async (req, res) => {
+  sql = `SELECT IFNULL(SUM(monto),0) as saldo
+         FROM cta_cte
+         WHERE id_cliente ='`+req.params.id+`'
+         AND baja IS NULL`;
+    conex.query(await sql, function(error, result, fields){
+      if (error) {
+          return res.status(404).send("Ha ocurrido un error en la consulta");
+      }
+      res.json(result[0])
+  });   
+}
+
 module.exports = saldosCtrl;

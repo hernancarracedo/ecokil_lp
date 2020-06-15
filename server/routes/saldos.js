@@ -8,6 +8,6 @@ const saldosController = require('../controllers/saldos');
 // const { isAuthenticated } = require('../helpers/auth');
  
 router.get('/saldos', saldosController.getSaldos);
-
+router.get('/saldo/:id', saldosController.getSaldo);
 
 module.exports = router;

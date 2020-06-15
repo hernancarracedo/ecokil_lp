@@ -87,9 +87,12 @@ class Landing extends Component {
           </div>
           </div>  
           
+          {/**
           <Link to={"/login"} className="btn btn-primary" title="ingresar al sistema">
               Ingresar
           </Link>
+           */}
+
         </div>
       </div>
     )

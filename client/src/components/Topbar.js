@@ -20,6 +20,13 @@ class Topbar extends Component {
     })
   }
 
+  logOut(e) {
+    e.preventDefault()
+    localStorage.removeItem('usertoken')
+    window.location.href = '/login';
+    //this.props.history.push(`/`)
+  }
+
   render() {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom">
@@ -45,11 +52,16 @@ class Topbar extends Component {
               </a>
               <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <Link to="/profile" className="dropdown-item">
-                  <i className="fa fa-user"></i> Perfil
+                  <i className="fa fa-user"></i> Datos Perfil
                 </Link>
-                <a className="dropdown-item" href="">Another action</a>
+                <Link to="/register" className="dropdown-item">
+                  <i className="fa fa-key"></i> Nuevo Usuario
+                </Link>
                 <div className="dropdown-divider"></div>
-                <a className="dropdown-item" href="">Something else here</a>
+                {/**<a className="dropdown-item" href="">Something else here</a>*/}
+                <a href="" onClick={this.logOut.bind(this)} className="dropdown-item">
+                  <i className="fa fa-power-off"></i> Logout
+                </a>
               </div>
             </li>
             <li>

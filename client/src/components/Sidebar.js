@@ -5,7 +5,7 @@ class Sidebar extends Component {
   logOut(e) {
     e.preventDefault()
     localStorage.removeItem('usertoken')
-    window.location.href = '/';
+    window.location.href = '/login';
     //this.props.history.push(`/`)
   }
 

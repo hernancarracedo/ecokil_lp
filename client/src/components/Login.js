@@ -36,9 +36,12 @@ class Login extends Component {
     return (
       <div className="container">
         <div className="row">
+          
+          
           <div className="col-md-6 mt-5 mx-auto">
+          <img src="/img/logo.jpg" alt="logo" className="rounded mx-auto d-block" />
             <form noValidate onSubmit={this.onSubmit}>
-              <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
+              <h1 className="h3 mb-3 font-weight-normal">Por favor inicie sesión</h1>
               <div className="form-group">
                 <label htmlFor="email">Email address</label>
                 <input

@@ -52,7 +52,7 @@ export default class Saldos extends Component {
                             <td>{saldo.tx_cliente}</td>
                             <td>$ {saldo.saldo}</td>
                             <td>
-                                <Link to={"/detalleCuenta/" + saldo.id_cliente} className="btn btn-warning mr-2" title="planos cliente">
+                                <Link to={"/detalleCuenta/" + saldo.id_cliente} className="btn btn-secondary mr-2" title="detalle de cuenta">
                                     <i className="fa fa-search"></i>
                                 </Link>
                             </td>

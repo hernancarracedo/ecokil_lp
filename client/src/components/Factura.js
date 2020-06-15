@@ -156,15 +156,14 @@ export default class Factura extends Component {
                                     placeholder="Observaciones"
                                     name="observaciones"
                                     onChange={this.onInputChange}
-                                    value={this.state.observaciones}
-                                    required>
+                                    value={this.state.observaciones}>
                                 </textarea>
                             </div>                    
                         </div>
 
                         <br /> 
 
-                        <button className="btn btn-primary btn-block">
+                        <button className="btn-lg btn-primary btn-block">
                         <i className="fa fa-save"></i> Guardar Factura 
                         </button>
                     </form>
