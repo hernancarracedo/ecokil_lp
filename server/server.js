@@ -15,8 +15,6 @@ app.use(
 var Users = require('./routes/Users')
 app.use('/users', Users)
 
-
-// rutas que voy agregando. HC.-
 app.use(require('./routes/cliente'));
 app.use(require('./routes/clienteTipo'));
 app.use(require('./routes/sucursal'));
@@ -27,6 +25,8 @@ app.use(require('./routes/detalleCuenta'));
 app.use(require('./routes/monitoreo'));
 app.use(require('./routes/referencias'));
 app.use(require('./routes/plano'));
+app.use(require('./routes/remito'));
+
 
 // routes
 //app.use('/cliente', require('./routes/cliente'));

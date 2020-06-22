@@ -28,6 +28,11 @@ class Topbar extends Component {
   }
 
   render() {
+    var avatar = {
+        width : '40px',
+        height : '40px'
+    }
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom">
         <button className="btn btn-primary" id="menu-toggle"><i className="fa fa-exchange"></i> Menu</button>
@@ -66,8 +71,8 @@ class Topbar extends Component {
             </li>
             <li>
 
-              <img src="/img/profile3.jpg" alt="imagen de perfil" className="rounded-circle" />
-              
+              <img src="/img/profile3.jpg" style={avatar} alt="imagen de perfil" className="rounded-circle" />
+
             </li>
           </ul>
         </div>

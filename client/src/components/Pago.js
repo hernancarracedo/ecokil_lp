@@ -25,11 +25,11 @@ export default class Pago extends Component {
                 idClienteSelected: res.data[0].id_cliente
             })
         }
-        console.log(this.props.match.params.id)
+        //console.log(this.props.match.params.id)
         if (this.props.match.params.id) {
-            console.log(this.props.match.params.id)
+            //console.log(this.props.match.params.id)
             const res = await axios.get('http://localhost:5000/pago/' + this.props.match.params.id);
-            console.log(res.data)
+            //console.log(res.data)
             this.setState({
                 id: res.data.id,
                 observaciones: res.data.observaciones,

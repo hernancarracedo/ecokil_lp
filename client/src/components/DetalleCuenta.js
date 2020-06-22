@@ -37,13 +37,13 @@ export default class DetalleCuenta extends Component {
     }
 
     deleteMovimiento = async (movimientoId) => {
-        let registroMov = this.state.detalleCuenta.filter(registro => registro.id == movimientoId );
+        let registroMov = this.state.detalleCuenta.filter(registro => registro.id === movimientoId );
         let tipo_doc = registroMov[0].tipo_doc;
-        if (tipo_doc == 'FC') {
+        if (tipo_doc === 'FC') {
             await axios.delete('http://localhost:5000/factura/delete/' + movimientoId);
         }
 
-        if (tipo_doc == 'RC') {
+        if (tipo_doc === 'RC') {
             await axios.delete('http://localhost:5000/pago/delete/' + movimientoId);
         }
 
@@ -89,7 +89,7 @@ export default class DetalleCuenta extends Component {
                                     <i className="fa fa-trash"></i>
                                 </button>
 
-                                { registro.tipo_doc == 'FC' 
+                                { registro.tipo_doc === 'FC' 
                                 ?
                                     <Link  to={"/facturaUpdate/" + registro.id} className="btn-sm btn-warning mr-2" title="actualizar factura">
                                         <i className="fa fa-pencil"></i>
@@ -97,7 +97,7 @@ export default class DetalleCuenta extends Component {
                                 :
                                     <span></span>
                                 }
-                                { registro.tipo_doc == 'RC' 
+                                { registro.tipo_doc === 'RC' 
                                 ?
                                     <Link  to={"/pagoUpdate/" + registro.id} className="btn-sm btn-warning mr-2" title="actualizar pago">
                                         <i className="fa fa-pencil"></i>

@@ -21,6 +21,10 @@ import Planos from './components/Planos'
 import Plano from './components/Plano'
 import CanvasB from './components/CanvasB'
 import CanvasC from './components/CanvasC'
+import Remito from './components/Remito'
+
+import SelectSearchTopReverse from './components/Tabla'
+
 
 //import Canvas from './components/Canvas'
 
@@ -70,6 +74,12 @@ class App extends Component {
 
                 <Route exact path="/CanvasC" component={CanvasC} />
            
+                <Route exact path="/remito" component={Remito} />
+
+                <Route exact path="/tabla" component={SelectSearchTopReverse} />        
+         
+                {/*<Route exact path="/tabla3" component={Report1} />   */}
+
               </div>
             </div>
     )

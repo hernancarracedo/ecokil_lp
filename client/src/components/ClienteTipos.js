@@ -38,7 +38,8 @@ export default class ClienteTipos extends Component {
         const res = await axios.get('http://localhost:5000/clientetipo')
 
         this.setState({
-            clienteTipos: res.data
+            //clienteTipos: res.data
+            clienteTipos: data
         });
         
         const botonBorrar = "<button className='btn btn-danger mr-2' title='borrar tipo cliente' onClick={() => this.deleteClienteTipo(clienteTipo.id_tipo_cliente)}> <i className='fa fa-trash'></i></button>"
