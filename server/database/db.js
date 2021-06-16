@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const db = {}
-const sequelize = new Sequelize('ecokil_lp', 'root', '', {
+const sequelize = new Sequelize('DATABASE_NAME', 'root', 'DATABASE_PASS', {
   host: 'localhost',
   dialect: 'mysql',
   operatorsAliases: false,

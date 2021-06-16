@@ -3,8 +3,8 @@ module.exports = {
     'connection': {
         'host': 'localhost',
         'user': 'root',
-        'password': ''
+        'password': 'DATABASE_PASS'
     },
-	'database': 'ecokil_lp',
+	'database': 'DATABASE_NAME',
     'users_table': 'users'
 };
