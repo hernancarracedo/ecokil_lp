@@ -75,6 +75,7 @@ export default class Factura extends Component {
         })
     }
 
+
     onChangeDate = fecha_alta => {
         this.setState({ fecha_alta });
     }

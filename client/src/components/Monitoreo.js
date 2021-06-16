@@ -76,7 +76,8 @@ export default class Monitoreo extends Component {
     render() {
         return (
             <div className="container-fluid">
-                <h1 className="mt-4"><i className="fa fa-search"></i> Monitoreo Dispositivos</h1>
+                <div className="col-md-8 offset-md-2">  
+                <h1 className="mt-4 mb-4"><i className="fa fa-search text-primary"></i> Monitoreo Dispositivos</h1>
                 <form onSubmit={this._onSubmit}>
                 <table className="table table-hover">
                     <thead>
@@ -132,6 +133,7 @@ export default class Monitoreo extends Component {
                 </table>
                 <div className="d-flex justify-content-center"><button className="btn btn-danger btn-lg btn-block" type="submit">Confirma Monitoreo</button></div>
           </form>
+            </div>
             </div>
         )
     }

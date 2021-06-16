@@ -22,7 +22,8 @@ export default class Saldos extends Component {
     render() {
         return (
             <div className="container-fluid">
-                <h1 className="m-3"><i className="fa fa-balance-scale"></i> SALDOS </h1>
+                <div className="col-md-10 offset-md-1">
+                <h1 className="m-3"><i className="fa fa-balance-scale mr-3 text-primary"></i>SALDOS </h1>
 
                 <div className="row m-1">
                     <div className="col-md-6">
@@ -63,6 +64,7 @@ export default class Saldos extends Component {
 
 
                 </table>
+                </div>
             </div>
         )
     }

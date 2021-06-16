@@ -22,9 +22,14 @@ import Plano from './components/Plano'
 import CanvasB from './components/CanvasB'
 import CanvasC from './components/CanvasC'
 import Remito from './components/Remito'
+import Remitos from './components/Remitos'
+import ClienteSucursalSelector from './components/ClienteSucursalSelector'
 
 import SelectSearchTopReverse from './components/Tabla'
 
+import OptimizedClass from './components/tabla3'
+import DTable from './components/Tabla4'
+import TablaDatos from './components/Tabla5'
 
 //import Canvas from './components/Canvas'
 
@@ -50,13 +55,10 @@ class App extends Component {
                 <Route exact path="/cliente" component={Cliente} />            
                 <Route exact path="/clienteUpdate/:id" component={Cliente} />
 
-                
                 <Route exact path="/factura" component={Factura} />            
                 <Route exact path="/facturaUpdate/:id" component={Factura} />        
-
                 <Route exact path="/pago" component={Pago} />            
                 <Route exact path="/pagoUpdate/:id" component={Pago} />       
-
                 <Route exact path="/saldos" component={Saldos} />      
                 <Route exact path="/detalleCuenta/:id" component={DetalleCuenta} />   
 
@@ -67,18 +69,19 @@ class App extends Component {
                 <Route exact path="/dispositivosMonitoreo/:id" component={Monitoreo} />
 
                 <Route exact path="/Planos/:id" component={Planos} />
-
                 <Route exact path="/Plano" component={Plano} />
-
                 <Route exact path="/CanvasB" component={CanvasB} />
-
                 <Route exact path="/CanvasC" component={CanvasC} />
            
                 <Route exact path="/remito" component={Remito} />
+                <Route exact path="/remitos" component={Remitos} />
 
                 <Route exact path="/tabla" component={SelectSearchTopReverse} />        
-         
-                {/*<Route exact path="/tabla3" component={Report1} />   */}
+                <Route exact path="/tabla3" component={OptimizedClass} />   
+                <Route exact path="/tabla4" component={DTable} />  
+                <Route exact path="/tabla5" component={TablaDatos} />
+
+                <Route exact path="/ClienteSucursalSelector" component={ClienteSucursalSelector} />  
 
               </div>
             </div>

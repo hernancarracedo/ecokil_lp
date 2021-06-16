@@ -16,4 +16,6 @@ router.get('/factura/:id', facturaController.getFactura);
 router.put('/factura/update/:id', facturaController.updateFactura);
 router.delete('/factura/delete/:id', facturaController.deleteFactura);
 
+
+
 module.exports = router;

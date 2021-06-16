@@ -26,15 +26,19 @@ class Profile extends Component {
   render() {
     return (
       <div className="container-fluid">
-        <h1 className="mt-4">Profile</h1>
+        <div className="col-md-8 offset-md-2">
+        <h1 className="mt-4">
+          <i className="fa fa-user mr-3 text-primary"></i>
+          Profile
+        </h1>
           <table className="table col-md-12 mx-auto">
             <tbody>
               <tr>
-                <td>Fist Name</td>
+                <td>Nombre</td>
                 <td>{this.state.first_name}</td>
               </tr>
               <tr>
-                <td>Last Name</td>
+                <td>Apellido</td>
                 <td>{this.state.last_name}</td>
               </tr>
               <tr>
@@ -43,6 +47,7 @@ class Profile extends Component {
               </tr>
             </tbody>
           </table>
+          </div>
       </div>
     )
   }

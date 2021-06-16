@@ -34,6 +34,10 @@ class Sidebar extends Component {
           </Link>
           <Link to="/saldos" className="list-group-item list-group-item-action bg-light">
             <i className="fa fa-balance-scale"></i> Saldos
+            </Link>
+          <Link to="/remitos" className="list-group-item list-group-item-action bg-light">
+            <i className="fa fa-edit"></i> Remitos
+
           </Link>
           <a href="" onClick={this.logOut.bind(this)} className="list-group-item list-group-item-action bg-light">
             <i className="fa fa-power-off"></i>  Logout
@@ -43,7 +47,9 @@ class Sidebar extends Component {
 
     return (
       <div>
-      <div className="sidebar-heading">ECOKIL | <i className="fa fa-bug"></i><i className="fa fa-ban"></i></div>
+      <div className="sidebar-heading text-success">
+      <img src="img/letra.png" height="25px;" alt="imagen de perfil"  />
+      </div>
       <div className="list-group list-group-flush">
         <Link to="/" className="list-group-item list-group-item-action bg-light">
           <i className="fa fa-home"></i>  Home

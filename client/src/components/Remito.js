@@ -17,9 +17,10 @@ export default class Remito extends Component {
     }
     */
 
-   state = {
+   constructor(props) {
+    super(props);
+    this.state = {
         file: null,
-
         id_remito: '',
         id_cliente: '',
         descripcion: '',
@@ -28,15 +29,28 @@ export default class Remito extends Component {
         fecha: new Date(),
         idClienteSelected: '',
         clientes: [],
+        sucursales: [],
+        idSucursalSelected: '',
         editing: false,
-    }
+    };
 
+    //this.handleChange = this.handleChange.bind(this);
+    this.handleChange2 = this.handleChange2.bind(this);
+    //this.handleSubmit = this.handleSubmit.bind(this);
+    
+    this.onClienteChange = this.onClienteChange.bind(this);
+  }
+/*
+   state = {
+
+    }
+*/
     async componentDidMount() {
         const res = await axios.get('http://localhost:5000/cliente');
         if (res.data.length > 0) {
             this.setState({
                 clientes: res.data.map(cliente => [cliente.id_cliente,cliente.tx_cliente]),
-                idClienteSelected: res.data[0].id_cliente
+                //idClienteSelected: res.data[0].id_cliente
             })
         }
         if (this.props.match.params.id) {
@@ -56,27 +70,6 @@ export default class Remito extends Component {
 
     onSubmit = async (e) => {
         e.preventDefault();
-        /*
-        const newRemito = {
-            //id_cliente:  this.state.idClienteSelected,
-            //observaciones:  this.state.observaciones,
-            fecha: this.state.fecha,
-            myImage: this.state.file
-            //cheque: this.state.cheque,
-            //monto: this.state.monto
-        };
-
-        const formData = new FormData();
-        formData.append('myImage',this.state.file);
-        const config = {
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
-        };
-
-        axios.post('http://localhost:5000/remito/create/', newRemito);
-*/
-//        e.preventDefault();
         const formData = new FormData();
         formData.append('myImage',this.state.file);
         formData.append('fecha',new Date(this.state.fecha));
@@ -91,9 +84,11 @@ export default class Remito extends Component {
         
         await axios.post("/remito/create",formData,config)
             .then((response) => {
-                alert("The file is successfully uploaded");
+                alert("El remito ha sido guardado exitosamente");
             }).catch((error) => {
         });
+        // prueba de la siguiente linea
+        window.location.href = '/remitos';
         
     }
     
@@ -103,6 +98,20 @@ export default class Remito extends Component {
         this.setState({
             [e.target.name]: e.target.value
         })
+    }
+
+    onClienteChange = async (e) => {
+        let cliente = e.target.value;
+        const res = await axios.get('http://localhost:5000/sucursalcliente/' + cliente);
+        this.setState({
+            idSucursalSelected: '',            
+            sucursales: res.data.map(sucursal => [sucursal.id_sucursal,sucursal.tx_sucursal]),
+            idClienteSelected: cliente
+        })
+    }
+
+    handleChange2(event) {
+        this.setState({idSucursalSelected: event.target.value});
     }
 
     onChangeFile = (e) => {
@@ -126,10 +135,13 @@ export default class Remito extends Component {
 <div className="container-fluid">
 
      <div className="col-md-8 offset-md-2">
-     <h1 className="mt-4">REMITO</h1>
+     <h1 className="mt-4">
+        <i className="fa fa-edit text-primary mr-3"></i>
+         Remito
+    </h1>
      <form onSubmit={this.onSubmit}>
 
-         {/* Fecha de Factura */}
+         {/* Fecha de Remito */}
          <div className="form-group row">
              <label className="col-sm-3 col-form-label" htmlFor="fecha">Fecha Servicio:</label>
              <br/>                     
@@ -192,9 +204,10 @@ export default class Remito extends Component {
                  <select
                      className="form-control"
                      value={this.state.idClienteSelected}
-                     onChange={this.onInputChange}
+                     onChange={this.onClienteChange}
                      name="idClienteSelected"
                      required>
+                         <option value=''>Seleccion cliente...</option>
                      {
                          this.state.clientes.map(cliente => (
                              <option key={cliente[0]} value={cliente[0]}>
@@ -205,6 +218,19 @@ export default class Remito extends Component {
                  </select>
              </div>                        
          </div>
+
+         {/* SELECCIONAR SUCURSAL */}
+         <div className="form-group row">
+                <label className="col-sm-3 col-form-label" htmlFor="tx_cliente">Sucursal:</label>
+                <div className="col-md-9"> 
+                    <select value={this.state.value2} onChange={this.handleChange2} className="form-control" name="idSucursalSelected">
+                        <option value=''>Seleccion sucursal...</option>
+                        {
+                            this.state.sucursales.map((sucursal, index) => <option value={sucursal[0]} key={index}>{sucursal[1]}</option>)
+                        }
+                    </select>
+                </div>      
+         </div> 
                     
          {/* Archivo escaneado del remito */}
          <div className="form-group row">

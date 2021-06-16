@@ -19,6 +19,21 @@ sucursalCtrl.getSucursales = async (req, res) => {
     });   
 }
 
+//
+sucursalCtrl.getSucursalesByCliente = async (req, res) => {
+    sql = `SELECT id_sucursal, tx_sucursal, tx_cliente, SUC.domicilio, SUC.observaciones, fecha_desde as fecha_desde2, DATE_FORMAT(fecha_desde, '%d/%m/%Y') as fecha_desde
+           FROM sucursales AS SUC
+           LEFT JOIN clientes as CLI on CLI.id_cliente = SUC.id_cliente
+           WHERE SUC.fecha_hasta is null
+           AND SUC.id_cliente = '`+req.params.id+`'`;
+    conex.query(await sql, function(error, result, fields){
+        if (error) {
+            return res.status(404).send("Ha ocurrido un error en la consulta");
+        }
+        res.json(result)
+    });   
+}
+
 //  
 sucursalCtrl.createSucursal = async (req, res) => {
     const { tx_sucursal, id_cliente, domicilio, observaciones } = req.body;

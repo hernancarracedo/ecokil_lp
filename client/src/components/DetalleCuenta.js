@@ -91,7 +91,7 @@ export default class DetalleCuenta extends Component {
 
                                 { registro.tipo_doc === 'FC' 
                                 ?
-                                    <Link  to={"/facturaUpdate/" + registro.id} className="btn-sm btn-warning mr-2" title="actualizar factura">
+                                    <Link  to={"/facturaUpdate/" + registro.id} className="btn-sm btn-warning mr-2 pt-2 pb-2" title="actualizar factura">
                                         <i className="fa fa-pencil"></i>
                                     </Link>
                                 :
@@ -99,7 +99,7 @@ export default class DetalleCuenta extends Component {
                                 }
                                 { registro.tipo_doc === 'RC' 
                                 ?
-                                    <Link  to={"/pagoUpdate/" + registro.id} className="btn-sm btn-warning mr-2" title="actualizar pago">
+                                    <Link  to={"/pagoUpdate/" + registro.id} className="btn-sm btn-warning mr-2  pt-2 pb-2" title="actualizar pago">
                                         <i className="fa fa-pencil"></i>
                                     </Link>
                                 :

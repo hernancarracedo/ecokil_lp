@@ -124,6 +124,8 @@ export default class Pago extends Component {
                             </div>                        
                         </div>
 
+
+
                         {/* SELECCIONAR CLIENTE */}
                         <div className="form-group row">
                             <label className="col-sm-3 col-form-label" htmlFor="idClienteSelected">Cliente:</label>

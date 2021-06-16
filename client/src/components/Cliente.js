@@ -66,7 +66,7 @@ export default class Cliente extends Component {
             console.log(this.state);  
             const newCliente = {
                 tx_cliente:  this.state.tx_cliente,
-                id_tipo_cliente:  this.state.id_tipo_cliente,
+                id_tipo_cliente:  this.state.idTipoClienteSelected,
                 observaciones:  this.state.observaciones,
                 fecha_alta: this.state.fecha_alta,
                 razon_social: this.state.razon_social,
@@ -91,8 +91,14 @@ export default class Cliente extends Component {
     render() {
         return (
             <div className="container-fluid">
-               <h1 className="mt-4">CLIENTES</h1>
+               
                     <div className="col-md-8 offset-md-2">
+                    <h1 className="mt-4">
+                    <i className="fa fa-address-card-o mr-3 text-primary"></i>
+                        CLIENTES
+                    </h1>
+
+
                     <form onSubmit={this.onSubmit}>
                        
                         {/* Nombre de fantasía del cliente */}

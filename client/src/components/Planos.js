@@ -28,9 +28,9 @@ export default class Planos extends Component {
     render() {
         return (
             <div className="container-fluid">
-                <h1 className="mt-4"><i className="fa fa-crosshairs"></i> Planos cliente                                 
-                <Link to={"/cliente/"} title="nuevo cliente" className="btn btn-success btn-sm ml-3">
-                    <i className="fa fa-plus"></i>
+                <h1 className="mt-4"><i className="fa fa-crosshairs mr-3 text-primary"></i> Planos cliente                                 
+                <Link to={"/cliente/"} title="nuevo cliente" className="btn btn-success btn ml-3">
+                    <i className="fa fa-bolt"></i>
                 </Link>
                 </h1>
 

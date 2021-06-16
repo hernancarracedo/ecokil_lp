@@ -27,9 +27,9 @@ export default class Clientes extends Component {
     render() {
         return (
             <div className="container-fluid">
-                <h1 className="mt-4"><i className="fa fa-address-book-o"></i> Clientes                                 
-                <Link to={"/cliente/"} title="nuevo cliente" className="btn btn-success btn-sm ml-3">
-                    <i className="fa fa-plus"></i>
+                <h1 className="mt-4"><i className="fa fa-address-book-o text-primary"></i> Clientes                                 
+                <Link to={"/cliente/"} title="nuevo cliente" className="btn btn-success btn ml-3">
+                    <i className="fa fa-bolt"></i>
                 </Link>
                 </h1>
 
@@ -53,13 +53,13 @@ export default class Clientes extends Component {
                             <td>{cliente.fecha_alta}</td>
                             <td>{cliente.observaciones}</td>
                             <td>
-                                <button className="btn-sm btn-danger mr-2 " title="borrar cliente" onClick={() => this.deleteCliente(cliente.id_cliente)}>
+                                <button className="btn-sm btn-danger mr-2" title="borrar cliente" onClick={() => this.deleteCliente(cliente.id_cliente)}>
                                     <i className="fa fa-trash"></i>
                                 </button>
-                                <Link to={"/clienteUpdate/" + cliente.id_cliente} className="btn-sm btn-warning mr-2" title="actualizar cliente">
+                                <Link to={"/clienteUpdate/" + cliente.id_cliente} className="btn-sm btn-warning mr-2 pt-2 pb-2" title="actualizar cliente">
                                     <i className="fa fa-pencil"></i>
                                 </Link>
-                                <Link to={"/planos/" + cliente.id_cliente} className="btn-sm btn-success mr-2" title="planos cliente">
+                                <Link to={"/planos/" + cliente.id_cliente} className="btn-sm btn-success mr-2  pt-2 pb-2" title="planos cliente">
                                     <i className="fa fa-bug"></i>
                                 </Link>
                             </td>

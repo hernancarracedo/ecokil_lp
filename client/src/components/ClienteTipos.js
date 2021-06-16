@@ -2,11 +2,17 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import DataTable from 'react-data-table-component';
-
+/*
 const data = [
     { id: 1, title: 'Conan the Barbarian', year: '1982' }, 
     { id: 2, title: 'Los Super agentes', year: '1986' },
     { id: 3, title: 'Odisea del Espacio', year: '2002' }
+];
+*/
+const data = [
+    { id: 1, title: 'Conan the Barbarian' }, 
+    { id: 2, title: 'Los Super agentes' },
+    { id: 3, title: 'Odisea del Espacio' }
 ];
 
 const columns = [
@@ -38,8 +44,8 @@ export default class ClienteTipos extends Component {
         const res = await axios.get('http://localhost:5000/clientetipo')
 
         this.setState({
-            //clienteTipos: res.data
-            clienteTipos: data
+            clienteTipos: res.data
+            //clienteTipos: data
         });
         
         const botonBorrar = "<button className='btn btn-danger mr-2' title='borrar tipo cliente' onClick={() => this.deleteClienteTipo(clienteTipo.id_tipo_cliente)}> <i className='fa fa-trash'></i></button>"
@@ -61,17 +67,22 @@ export default class ClienteTipos extends Component {
 
     render() {
         return (
+            /*
             <DataTable
             title="Tipos de Cliente"
             columns={columns}
-            data={this.state.contenido}
+            //data={this.state.contenido}
+            data={data}
           />
-          
-           /*
+          */
+           
             <div className="container-fluid">
-                <h1 className="mt-4"><i className="fa fa-caret-down"></i> Tipos de Cliente
-                <Link to={"/cliente/"} title="nuevo cliente" className="btn btn-success btn-sm ml-3">
-                    <i className="fa fa-plus"></i>
+                <div className="col-md-8 offset-md-2">
+                <h1 className="mt-4">
+                    <i className="fa fa-th text-primary mr-3"></i> 
+                    Tipos de Cliente
+                <Link to={"/cliente/"} title="nuevo cliente" className="btn btn-success btn ml-3">
+                    <i className="fa fa-bolt"></i>
                 </Link>
                 </h1>
 
@@ -117,8 +128,9 @@ export default class ClienteTipos extends Component {
                     </tfoot>
 
                 </table>
+                </div>
             </div>
-            */
+ 
         )
     }
 }

@@ -51,8 +51,11 @@ export default class ClienteTipo extends Component {
     render() {
         return (
             <div className="container-fluid">
-               <h1 className="mt-4">TIPO CLIENTE</h1>
+               
                     <div className="col-md-8 offset-md-2">
+                    <h1 className="mt-4">
+                        <i className="fa fa-th mr-3 text-primary"></i>
+                        TIPO CLIENTE</h1>
                     <form onSubmit={this.onSubmit}>
                        
                         {/* Nombre del tipo de cliente */}

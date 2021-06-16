@@ -31,7 +31,7 @@ const storage = multer.diskStorage({
 //router.get('/documento/add', isAuthenticated, documentoController.documentoRender);
 //router.post('/remito/create', upload.single('myImage'), remitoController.createRemito);
 router.post('/remito/create', upload, remitoController.createRemito);
-//router.get('/documento', isAuthenticated, documentoController.getDocumentos);
+router.get('/remitos', remitoController.getRemitos);
 //router.get('/documento/edit/:id', isAuthenticated, documentoController.documentoEditRender);
 //router.put('/documento/edit-documento/:id', isAuthenticated, documentoController.documentoEdit);
 //router.put('/documento/delete/:id', isAuthenticated, documentoController.documentoDelete);

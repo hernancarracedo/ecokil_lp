@@ -7,7 +7,8 @@ class Topbar extends Component {
   state = {
       first_name: '',
       last_name: '',
-      email: ''
+      email: '',
+      avatar: ''
   }
 
   componentDidMount() {
@@ -16,6 +17,7 @@ class Topbar extends Component {
     this.setState({
       first_name: decoded.first_name,
       last_name: decoded.last_name,
+      avatar: decoded.avatar,
       email: decoded.email
     })
   }
@@ -71,7 +73,7 @@ class Topbar extends Component {
             </li>
             <li>
 
-              <img src="/img/profile3.jpg" style={avatar} alt="imagen de perfil" className="rounded-circle" />
+              <img src={this.state.avatar} style={avatar} alt="imagen de perfil" className="rounded-circle" />
 
             </li>
           </ul>

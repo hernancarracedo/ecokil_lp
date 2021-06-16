@@ -77,15 +77,21 @@ class CanvasB extends Component {
 
   _onSubmit = event => {
     event.preventDefault();
-    const newDespliegue = []
+    const newDespliegue = [];
+    let output = "";
     this.state.items.map(item => newDespliegue.push({
       x: item.x,
       y: item.y,
       id: item.id,
       name: item.name })
     )
+
+    this.state.items.map(item => output = output + "X: " + item.x + " Y: " + item.y + " ID:" + item.id + " nombre: " + item.name + "\n"
+    )
+
     console.log ("HOLA");
-    console.log(newDespliegue);
+
+    alert(output);
     //axios.post('http://localhost:5000/monitoreo/create/', newMonitoreo);
     //window.location.href = '/';
   };

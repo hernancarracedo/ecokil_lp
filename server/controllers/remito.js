@@ -8,13 +8,12 @@ const remitoCtrl = {};
 
 //
 
-/*
-pagoCtrl.getPagos = async (req, res) => {
-    sql = `SELECT id, FAC.id_cliente, tx_cliente, tipo_doc, monto, factura, cheque, FAC.observaciones, FAC.fecha_alta as fecha2, DATE_FORMAT(FAC.fecha_alta, '%d/%m/%Y') as fecha_alta
-           FROM cta_cte AS FAC
-           LEFT JOIN clientes as CLI on CLI.id_cliente = FAC.id_cliente
-           WHERE FAC.tipo_doc = 'RC' 
-           AND FAC.baja is null`;
+
+remitoCtrl.getRemitos = async (req, res) => {
+    sql = `SELECT id_remito, nro_remito, REM.id_cliente, tx_cliente, descripcion, REM.fecha as fecha2, DATE_FORMAT(REM.fecha, '%d/%m/%Y') as fecha, file_name 
+    FROM remitos AS REM
+    LEFT JOIN clientes as CLI on CLI.id_cliente = REM.id_cliente
+    WHERE REM.baja is null`;
     conex.query(await sql, function(error, result, fields){
         if (error) {
             return res.status(404).send("Ha ocurrido un error en la consulta");
@@ -22,7 +21,7 @@ pagoCtrl.getPagos = async (req, res) => {
         res.json(result)
     });   
 }
-*/
+
 
 //  
 remitoCtrl.createRemito = async (req, res) => {
@@ -37,9 +36,9 @@ remitoCtrl.createRemito = async (req, res) => {
 
     var fecha_remito = dateformat(new Date(fecha), "yyyy-mm-dd")
 
-    sql = `INSERT INTO remitos (fecha, nro_remito, id_cliente, descripcion, factura, observacines, file_name) VALUES ('`+fecha_remito+`', '`+nro_remito+`', '`+id_cliente+`', '`+descripcion+`', '`+factura+`', '`+observaciones+`', '/uploads/remitos/`+file.filename+`')`;
+    sql = `INSERT INTO remitos (fecha, nro_remito, id_cliente, descripcion, file_name) VALUES ('`+fecha_remito+`', '`+nro_remito+`', '`+id_cliente+`', '`+descripcion+`', '/uploads/remitos/`+file.filename+`')`;
     //sql = `INSERT INTO remitos (fecha) VALUES ('`+fecha+`')`;
-    //console.log('la consulta sql queda: '+ sql);
+    console.log('la consulta sql queda: '+ sql);
     //console.log('el dia de la fecha que llega es: '+ dia);
     //console.log('el mesa de la fecha que llega es: '+ mes);
     //console.log('el año de la fecha que llega es: '+ anio);

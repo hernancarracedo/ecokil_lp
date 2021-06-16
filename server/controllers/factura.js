@@ -20,10 +20,12 @@ facturaCtrl.getFacturas = async (req, res) => {
     });   
 }
 
+
 //  
 facturaCtrl.createFactura = async (req, res) => {
     const { id_cliente, monto, factura, fecha_alta, observaciones } = req.body;
     sql = "INSERT INTO cta_cte (`id_cliente`, `tipo_doc`, `monto`, `factura`, `fecha_alta`, `observaciones`) VALUES ('" + id_cliente + "','FC', '" + monto + "', '" + factura + "', '" + fecha_alta + "', '" + observaciones + "')";
+    console.log("la consulta queda: " + sql);
     conex.query(await sql, function(error, resultado, fields){
         if (error) {
             return res.status(404).send("Ha ocurrido un error en la consulta:" + error.message);
